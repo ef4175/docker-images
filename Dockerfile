@@ -11,5 +11,5 @@ RUN apt-get install -y --no-install-recommends libxt-dev
 
 WORKDIR /firefox
 
-RUN curl -fsSLO --compressed https://download-installer.cdn.mozilla.net/pub/firefox/nightly/latest-mozilla-central/firefox-66.0a1.en-US.linux-x86_64.tar.bz2
-RUN tar -jxf firefox-66.0a1.en-US.linux-x86_64.tar.bz2
+RUN curl -fsSLO --compressed https://download-installer.cdn.mozilla.net/pub/firefox/nightly/latest-mozilla-central/firefox-67.0a1.en-US.linux-x86_64.tar.bz2
+RUN tar -jxf firefox-67.0a1.en-US.linux-x86_64.tar.bz2
