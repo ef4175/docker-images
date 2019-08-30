@@ -2,4 +2,4 @@
 
 groupadd -f -g $USER_GID $USER_NAME
 adduser --disabled-login --uid $USER_UID --gid $USER_GID --gecos '' $USER_NAME
-sudo -HEu $USER_NAME /firefox_nightly/firefox/firefox
+sudo -HEu $USER_NAME /firefox_nightly/firefox/firefox $@
