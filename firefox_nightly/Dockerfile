@@ -8,8 +8,15 @@ RUN apt-get install -y --no-install-recommends libgtk-3-0
 RUN apt-get install -y --no-install-recommends libx11-xcb-dev
 RUN apt-get install -y --no-install-recommends libdbus-glib-1-dev
 RUN apt-get install -y --no-install-recommends libxt-dev
+RUN apt-get install -y --no-install-recommends sudo
+RUN apt-get install -y --no-install-recommends pulseaudio
 
 WORKDIR /firefox_nightly
 
 RUN curl -fsSLO --compressed https://download-installer.cdn.mozilla.net/pub/firefox/nightly/latest-mozilla-central/firefox-70.0a1.en-US.linux-x86_64.tar.bz2
 RUN tar -jxf firefox-70.0a1.en-US.linux-x86_64.tar.bz2
+
+COPY entrypoint.sh /sbin/entrypoint.sh
+RUN chmod 755 /sbin/entrypoint.sh
+
+ENTRYPOINT ["/sbin/entrypoint.sh"]

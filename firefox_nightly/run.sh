@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
 
 docker build -t firefox_nightly .
-xhost +local:root
-docker run -it -e DISPLAY=$DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix --rm firefox_nightly /firefox_nightly/firefox/firefox
+docker run -it -e DISPLAY=$DISPLAY -e USER_UID=`id -u` -e USER_GID=`id -g` -e USER_NAME=foobar -e PULSE_SERVER=/run/pulse/native -v /tmp/.X11-unix:/tmp/.X11-unix -v /run/user/1000/pulse:/run/pulse --rm firefox_nightly
