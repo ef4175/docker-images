@@ -13,8 +13,8 @@ RUN apt-get install -y --no-install-recommends pulseaudio
 
 WORKDIR /firefox
 
-RUN curl -fsSLO --compressed https://download-installer.cdn.mozilla.net/pub/firefox/releases/69.0.2/linux-x86_64/en-US/firefox-69.0.2.tar.bz2
-RUN tar -jxf firefox-69.0.2.tar.bz2
+RUN curl -fsSLO --compressed https://download-installer.cdn.mozilla.net/pub/firefox/releases/69.0.3/linux-x86_64/en-US/firefox-69.0.3.tar.bz2
+RUN tar -jxf firefox-69.0.3.tar.bz2
 
 COPY entrypoint.sh /sbin/entrypoint.sh
 RUN chmod 755 /sbin/entrypoint.sh
