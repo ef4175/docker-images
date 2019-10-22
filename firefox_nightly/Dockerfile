@@ -13,8 +13,8 @@ RUN apt-get install -y --no-install-recommends pulseaudio
 
 WORKDIR /firefox_nightly
 
-RUN curl -fsSLO --compressed https://download-installer.cdn.mozilla.net/pub/firefox/nightly/latest-mozilla-central/firefox-71.0a1.en-US.linux-x86_64.tar.bz2
-RUN tar -jxf firefox-71.0a1.en-US.linux-x86_64.tar.bz2
+RUN curl -fsSLO --compressed https://download-installer.cdn.mozilla.net/pub/firefox/nightly/latest-mozilla-central/firefox-72.0a1.en-US.linux-x86_64.tar.bz2
+RUN tar -jxf firefox-72.0a1.en-US.linux-x86_64.tar.bz2
 
 COPY entrypoint.sh /sbin/entrypoint.sh
 RUN chmod 755 /sbin/entrypoint.sh
