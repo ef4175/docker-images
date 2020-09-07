@@ -14,4 +14,8 @@ then
   NEAREST_GIT_DIR=$CWD
 fi
 
-docker run -it --rm --user $USER_NAME -v $NEAREST_GIT_DIR:/home/$USER_NAME/project -v /home/$USER_NAME/.gitconfig:/home/$USER_NAME/.gitconfig git git "$@"
+LEN_NEAREST_GIT_DIR=${#NEAREST_GIT_DIR}
+SUFFIX_AFTER_NEAREST_GIT_DIR=${CWD:$LEN_NEAREST_GIT_DIR}
+DOCKER_WORKDIR=/home/$USER_NAME/project$SUFFIX_AFTER_NEAREST_GIT_DIR
+
+docker run -it --rm --user $USER_NAME -v $NEAREST_GIT_DIR:/home/$USER_NAME/project -v /home/$USER_NAME/.gitconfig:/home/$USER_NAME/.gitconfig -w $DOCKER_WORKDIR git git "$@"
