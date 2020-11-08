@@ -1,22 +1,26 @@
 FROM debian:buster
 
-RUN apt-get update
-RUN apt-get install -y --no-install-recommends curl
-RUN apt-get install -y --no-install-recommends ca-certificates
-RUN apt-get install -y --no-install-recommends bzip2
-RUN apt-get install -y --no-install-recommends libgtk-3-0
-RUN apt-get install -y --no-install-recommends libx11-xcb-dev
-RUN apt-get install -y --no-install-recommends libdbus-glib-1-dev
-RUN apt-get install -y --no-install-recommends libxt-dev
-RUN apt-get install -y --no-install-recommends sudo
-RUN apt-get install -y --no-install-recommends pulseaudio
+ARG USER_UID
+ARG USER_GID
+ARG USER_NAME
 
-WORKDIR /firefox
+RUN apt-get update \
+  && apt-get install -y --no-install-recommends curl \
+    ca-certificates \
+    bzip2 \
+    libgtk-3-0 \
+    libx11-xcb-dev \
+    libdbus-glib-1-dev \
+    libxt-dev \
+    pulseaudio \
+  && rm -rf /var/lib/apt/lists/*
 
-RUN curl -fsSLO --compressed https://download-installer.cdn.mozilla.net/pub/firefox/releases/82.0.2/linux-x86_64/en-US/firefox-82.0.2.tar.bz2
-RUN tar -jxf firefox-82.0.2.tar.bz2
+RUN groupadd -f -g $USER_GID $USER_NAME \
+  && adduser --disabled-login --uid $USER_UID --gid $USER_GID --gecos '' $USER_NAME
 
-COPY entrypoint.sh /sbin/entrypoint.sh
-RUN chmod 755 /sbin/entrypoint.sh
+USER $USER_NAME
+WORKDIR /home/$USER_NAME
 
-ENTRYPOINT ["/sbin/entrypoint.sh"]
+RUN curl -fsSLO --compressed https://download-installer.cdn.mozilla.net/pub/firefox/releases/82.0.2/linux-x86_64/en-US/firefox-82.0.2.tar.bz2 \
+  && tar -jxf firefox-82.0.2.tar.bz2 \
+  && rm firefox-82.0.2.tar.bz2
