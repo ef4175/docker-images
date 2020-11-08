@@ -13,6 +13,7 @@ RUN apt-get update \
     libdbus-glib-1-dev \
     libxt-dev \
     pulseaudio \
+    libcanberra-gtk3-module \
   && rm -rf /var/lib/apt/lists/*
 
 RUN groupadd -f -g $USER_GID $USER_NAME \
