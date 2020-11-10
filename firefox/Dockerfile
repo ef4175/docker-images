@@ -16,8 +16,8 @@ RUN apt-get update \
     libcanberra-gtk3-module \
   && rm -rf /var/lib/apt/lists/*
 
-RUN groupadd -f -g $USER_GID $USER_NAME \
-  && adduser --disabled-login --uid $USER_UID --gid $USER_GID --gecos '' $USER_NAME
+RUN groupadd --gid $USER_GID $USER_NAME \
+  && useradd --uid $USER_UID --gid $USER_GID --shell /bin/bash --create-home $USER_NAME
 
 USER $USER_NAME
 WORKDIR /home/$USER_NAME
