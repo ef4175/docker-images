@@ -22,6 +22,6 @@ RUN groupadd --gid $USER_GID $USER_NAME \
 USER $USER_NAME
 WORKDIR /home/$USER_NAME
 
-RUN curl -fsSLO --compressed https://download-installer.cdn.mozilla.net/pub/firefox/releases/82.0.3/linux-x86_64/en-US/firefox-82.0.3.tar.bz2 \
-  && tar -jxf firefox-82.0.3.tar.bz2 \
-  && rm firefox-82.0.3.tar.bz2
+RUN curl -fsSLO --compressed https://download-installer.cdn.mozilla.net/pub/firefox/releases/83.0/linux-x86_64/en-US/firefox-83.0.tar.bz2 \
+  && tar -jxf firefox-83.0.tar.bz2 \
+  && rm firefox-83.0.tar.bz2
