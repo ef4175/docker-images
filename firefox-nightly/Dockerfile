@@ -14,6 +14,7 @@ RUN apt-get update \
     libxt-dev \
     pulseaudio \
     libcanberra-gtk3-module \
+    fonts-wqy-zenhei \
   && rm -rf /var/lib/apt/lists/*
 
 RUN groupadd --gid $USER_GID $USER_NAME \
