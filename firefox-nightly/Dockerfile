@@ -23,6 +23,6 @@ RUN groupadd --gid $USER_GID $USER_NAME \
 USER $USER_NAME
 WORKDIR /home/$USER_NAME
 
-RUN curl -fsSLO --compressed https://download-installer.cdn.mozilla.net/pub/firefox/nightly/latest-mozilla-central/firefox-85.0a1.en-US.linux-x86_64.tar.bz2 \
-  && tar -jxf firefox-85.0a1.en-US.linux-x86_64.tar.bz2 \
-  && rm firefox-85.0a1.en-US.linux-x86_64.tar.bz2
+RUN curl -fsSLO --compressed https://download-installer.cdn.mozilla.net/pub/firefox/nightly/latest-mozilla-central/firefox-86.0a1.en-US.linux-x86_64.tar.bz2 \
+  && tar -jxf firefox-86.0a1.en-US.linux-x86_64.tar.bz2 \
+  && rm firefox-86.0a1.en-US.linux-x86_64.tar.bz2
