@@ -5,11 +5,11 @@ ARG USER_GID
 ARG USER_NAME
 
 RUN apt-get update \
-  && apt-get install -y --no-install-recommends ca-certificates \
+  && apt-get install -y --no-install-recommends \
+    ca-certificates \
     curl \
     libcanberra-gtk3-module \
     libdbus-glib-1-dev \
-    libgtk-3-0 \
     libx11-xcb-dev \
     libxt-dev \
     pulseaudio \
