@@ -10,7 +10,6 @@ RUN apt-get update \
     curl \
     libcanberra-gtk3-module \
     libdbus-glib-1-dev \
-    libx11-xcb-dev \
     libxt-dev \
     pulseaudio \
     xz-utils \
