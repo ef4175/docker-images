@@ -21,4 +21,4 @@ docker run \
   -v `pwd`/TorBrowser:/home/$USER_NAME/tor-browser_en-US/Browser/TorBrowser \
   --shm-size=2g \
   --rm \
-  tor /home/$USER_NAME/tor-browser_en-US/Browser/start-tor-browser --verbose
+  tor-browser /home/$USER_NAME/tor-browser_en-US/Browser/start-tor-browser --verbose
