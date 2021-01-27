@@ -4,7 +4,7 @@ USER_NAME=`whoami`
 USER_UID=`id -u`
 if [ ! -d TorBrowser ]; then
   echo 'First run'
-  CONTAINER_ID=`docker run -d tor bash`
+  CONTAINER_ID=`docker run -d tor-browser bash`
   docker cp \
     $CONTAINER_ID:/home/$USER_NAME/tor-browser_en-US/Browser/TorBrowser \
     TorBrowser
