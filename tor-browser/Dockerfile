@@ -21,6 +21,6 @@ RUN groupadd --gid $USER_GID $USER_NAME \
 USER $USER_NAME
 WORKDIR /home/$USER_NAME
 
-RUN curl -fsSLO --compressed https://www.torproject.org/dist/torbrowser/10.0.15/tor-browser-linux64-10.0.15_en-US.tar.xz \
-  && tar -xf tor-browser-linux64-10.0.15_en-US.tar.xz \
-  && rm tor-browser-linux64-10.0.15_en-US.tar.xz
+RUN curl -fsSLO --compressed https://www.torproject.org/dist/torbrowser/10.0.16/tor-browser-linux64-10.0.16_en-US.tar.xz \
+  && tar -xf tor-browser-linux64-10.0.16_en-US.tar.xz \
+  && rm tor-browser-linux64-10.0.16_en-US.tar.xz
