@@ -18,12 +18,12 @@ RUN apt-get update \
     make \
   && rm -rf /var/lib/apt/lists/*
 
-RUN curl -fsSLO --compressed https://mirrors.edge.kernel.org/pub/software/scm/git/git-2.32.0.tar.gz \
-  && tar -zxf git-2.32.0.tar.gz \
-  && cd git-2.32.0 \
+RUN curl -fsSLO --compressed https://mirrors.edge.kernel.org/pub/software/scm/git/git-2.33.0.tar.gz \
+  && tar -zxf git-2.33.0.tar.gz \
+  && cd git-2.33.0 \
   && make prefix=/usr install \
   && cd .. \
-  && rm -rf git-2.32.0*
+  && rm -rf git-2.33.0*
 
 RUN groupadd -f -g $USER_GID $USER_NAME
 RUN adduser --disabled-login --uid $USER_UID --gid $USER_GID --gecos '' $USER_NAME
