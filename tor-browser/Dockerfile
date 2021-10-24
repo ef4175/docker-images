@@ -8,6 +8,9 @@ RUN apt-get update \
   && apt-get install -y --no-install-recommends \
     ca-certificates \
     curl \
+    dirmngr \
+    gpg \
+    gpg-agent \
     libcanberra-gtk3-module \
     libdbus-glib-1-dev \
     libxt-dev \
@@ -21,6 +24,9 @@ RUN groupadd --gid $USER_GID $USER_NAME \
 USER $USER_NAME
 WORKDIR /home/$USER_NAME
 
-RUN curl -fsSLO --compressed https://www.torproject.org/dist/torbrowser/10.5.8/tor-browser-linux64-10.5.8_en-US.tar.xz \
+RUN gpg --batch --recv-keys EF6E286DDA85EA2A4BA7DE684E2C6E8793298290 \
+  && curl -fsSLO --compressed https://www.torproject.org/dist/torbrowser/10.5.8/tor-browser-linux64-10.5.8_en-US.tar.xz \
+  && curl -fsSLO --compressed https://www.torproject.org/dist/torbrowser/10.5.8/tor-browser-linux64-10.5.8_en-US.tar.xz.asc \
+  && gpg --batch --verify tor-browser-linux64-10.5.8_en-US.tar.xz.asc tor-browser-linux64-10.5.8_en-US.tar.xz \
   && tar -xf tor-browser-linux64-10.5.8_en-US.tar.xz \
-  && rm tor-browser-linux64-10.5.8_en-US.tar.xz
+  && rm tor-browser-linux64-10.5.8_en-US.tar.xz tor-browser-linux64-10.5.8_en-US.tar.xz.asc
