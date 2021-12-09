@@ -28,8 +28,8 @@ USER $USER_NAME
 WORKDIR /home/$USER_NAME
 
 RUN gpg --batch --recv-keys 14F26682D0916CDD81E37B6D61B7B526D98F0353 \
-  && curl -fsSLO --compressed https://download-installer.cdn.mozilla.net/pub/firefox/releases/94.0.2/linux-x86_64/en-US/firefox-94.0.2.tar.bz2 \
-  && curl -fsSLO --compressed https://download-installer.cdn.mozilla.net/pub/firefox/releases/94.0.2/linux-x86_64/en-US/firefox-94.0.2.tar.bz2.asc \
-  && gpg --batch --verify firefox-94.0.2.tar.bz2.asc firefox-94.0.2.tar.bz2 \
-  && tar -jxf firefox-94.0.2.tar.bz2 \
-  && rm firefox-94.0.2.tar.bz2 firefox-94.0.2.tar.bz2.asc
+  && curl -fsSLO --compressed https://download-installer.cdn.mozilla.net/pub/firefox/releases/95.0/linux-x86_64/en-US/firefox-95.0.tar.bz2 \
+  && curl -fsSLO --compressed https://download-installer.cdn.mozilla.net/pub/firefox/releases/95.0/linux-x86_64/en-US/firefox-95.0.tar.bz2.asc \
+  && gpg --batch --verify firefox-95.0.tar.bz2.asc firefox-95.0.tar.bz2 \
+  && tar -jxf firefox-95.0.tar.bz2 \
+  && rm firefox-95.0.tar.bz2 firefox-95.0.tar.bz2.asc
