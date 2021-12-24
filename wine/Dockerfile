@@ -82,7 +82,17 @@ FROM wine-gl AS wine-gl-patch-audio-no-large-address-space-aware
 # However, this stage can be skipped if "large address space aware" PE flag is set on the client binary
 RUN sed -i "s/; enable-shm = yes/enable-shm = no/g" /etc/pulse/client.conf
 
-FROM wine-gl AS non-root
+FROM wine-gl AS wine-gl-fonts-liberation
+
+# Liberation Sans is a satisfactory replacement for Arial.
+# For true Arial, install ttf-mscorefonts-installer from contrib packages.
+
+RUN apt-get update \
+  && apt-get install -y --no-install-recommends \
+    fonts-liberation \
+  && rm -rf /var/lib/apt/lists/*
+
+FROM wine-gl-fonts-liberation AS non-root
 
 ARG USER_UID
 ARG USER_GID
