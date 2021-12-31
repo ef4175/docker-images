@@ -14,7 +14,7 @@ mkdir -p downloads
 docker run \
   -it \
   -e DISPLAY=$DISPLAY \
-  -e PULSE_SERVER=/run/pulse/native \
+  -e PULSE_SERVER=unix:///run/pulse/native \
   -v /tmp/.X11-unix:/tmp/.X11-unix \
   -v /run/user/$USER_UID/pulse:/run/pulse \
   -v `pwd`/downloads:/home/$USER_NAME/tor-browser_en-US/Browser/Downloads \
