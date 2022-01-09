@@ -13,6 +13,7 @@ fi
 mkdir -p downloads
 docker run \
   -it \
+  --pull never \
   -e DISPLAY=$DISPLAY \
   -e PULSE_SERVER=unix:///run/pulse/native \
   -v /tmp/.X11-unix:/tmp/.X11-unix \
