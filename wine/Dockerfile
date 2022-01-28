@@ -6,61 +6,76 @@ RUN apt-get update \
     curl \
   && rm -rf /var/lib/apt/lists/*
 
+# Version of libvkd3d1 in bullseye is too old for wine 7.0, so download the .deb files provided by winehq
+
 FROM curl AS wine-i386
 
 RUN dpkg --add-architecture i386 \
   && apt-get update \
   && apt-get install -y --no-install-recommends \
     libasound2:i386 \
-    libfaudio0:i386 \
+    libasound2-plugins:i386 \
+    libglib2.0-0:i386 \
     libgphoto2-6:i386 \
-    liblcms2-2:i386 \
-    libmpg123-0:i386 \
+    libgstreamer-plugins-base1.0-0:i386 \
+    libncurses6:i386 \
     libopenal1:i386 \
     libpcap0.8:i386 \
-    libvkd3d1:i386 \
+    libpulse0:i386 \
+    libsane1:i386 \
+    libvulkan1:i386 \
     ocl-icd-libopencl1:i386 \
-    libasound2-plugins:i386 \
-    libncurses6:i386 \
-  && curl -fsSLO https://dl.winehq.org/wine-builds/debian/dists/bullseye/main/binary-i386/wine-stable-i386_6.0.2~bullseye-1_i386.deb \
-  && curl -fsSLO https://dl.winehq.org/wine-builds/debian/dists/bullseye/main/binary-i386/wine-stable_6.0.2~bullseye-1_i386.deb \
-  && curl -fsSLO https://dl.winehq.org/wine-builds/debian/dists/bullseye/main/binary-i386/winehq-stable_6.0.2~bullseye-1_i386.deb \
+  && curl -fsSLO https://dl.winehq.org/wine-builds/debian/dists/bullseye/main/binary-i386/libvkd3d-shader1_1.2~bullseye-1_i386.deb \
+  && curl -fsSLO https://dl.winehq.org/wine-builds/debian/dists/bullseye/main/binary-i386/libvkd3d1_1.2~bullseye-1_i386.deb \
+  && curl -fsSLO https://dl.winehq.org/wine-builds/debian/dists/bullseye/main/binary-i386/wine-stable-i386_7.0.0.0~bullseye-1_i386.deb \
+  && curl -fsSLO https://dl.winehq.org/wine-builds/debian/dists/bullseye/main/binary-i386/wine-stable_7.0.0.0~bullseye-1_i386.deb \
+  && curl -fsSLO https://dl.winehq.org/wine-builds/debian/dists/bullseye/main/binary-i386/winehq-stable_7.0.0.0~bullseye-1_i386.deb \
   && dpkg -i \
-    wine-stable-i386_6.0.2~bullseye-1_i386.deb \
-    wine-stable_6.0.2~bullseye-1_i386.deb \
-    winehq-stable_6.0.2~bullseye-1_i386.deb \
+    libvkd3d-shader1_1.2~bullseye-1_i386.deb \
+    libvkd3d1_1.2~bullseye-1_i386.deb \
+    wine-stable-i386_7.0.0.0~bullseye-1_i386.deb \
+    wine-stable_7.0.0.0~bullseye-1_i386.deb \
+    winehq-stable_7.0.0.0~bullseye-1_i386.deb \
   && rm \
-    wine-stable-i386_6.0.2~bullseye-1_i386.deb \
-    wine-stable_6.0.2~bullseye-1_i386.deb \
-    winehq-stable_6.0.2~bullseye-1_i386.deb \
+    libvkd3d-shader1_1.2~bullseye-1_i386.deb \
+    libvkd3d1_1.2~bullseye-1_i386.deb \
+    wine-stable-i386_7.0.0.0~bullseye-1_i386.deb \
+    wine-stable_7.0.0.0~bullseye-1_i386.deb \
+    winehq-stable_7.0.0.0~bullseye-1_i386.deb \
   && rm -rf /var/lib/apt/lists/*
 
 FROM wine-i386 AS wine-amd64
 
-RUN apt-get update && \
-  apt-get install -y --no-install-recommends \
+RUN apt-get update \
+  && apt-get install -y --no-install-recommends \
     libasound2 \
-    libfaudio0 \
+    libasound2-plugins \
     libgphoto2-6 \
-    liblcms2-2 \
-    libmpg123-0 \
+    libgstreamer-plugins-base1.0-0 \
+    libncurses6 \
     libopenal1 \
     libpcap0.8 \
-    libvkd3d1 \
+    libpulse0 \
+    libsane1 \
+    libvulkan1 \
     ocl-icd-libopencl1 \
-    libasound2-plugins \
-    libncurses6 \
-  && curl -fsSLO https://dl.winehq.org/wine-builds/debian/dists/bullseye/main/binary-amd64/wine-stable-amd64_6.0.2~bullseye-1_amd64.deb \
-  && curl -fsSLO https://dl.winehq.org/wine-builds/debian/dists/bullseye/main/binary-amd64/wine-stable_6.0.2~bullseye-1_amd64.deb \
-  && curl -fsSLO https://dl.winehq.org/wine-builds/debian/dists/bullseye/main/binary-amd64/winehq-stable_6.0.2~bullseye-1_amd64.deb \
+  && curl -fsSLO https://dl.winehq.org/wine-builds/debian/dists/bullseye/main/binary-amd64/libvkd3d-shader1_1.2~bullseye-1_amd64.deb \
+  && curl -fsSLO https://dl.winehq.org/wine-builds/debian/dists/bullseye/main/binary-amd64/libvkd3d1_1.2~bullseye-1_amd64.deb \
+  && curl -fsSLO https://dl.winehq.org/wine-builds/debian/dists/bullseye/main/binary-amd64/wine-stable-amd64_7.0.0.0~bullseye-1_amd64.deb \
+  && curl -fsSLO https://dl.winehq.org/wine-builds/debian/dists/bullseye/main/binary-amd64/wine-stable_7.0.0.0~bullseye-1_amd64.deb \
+  && curl -fsSLO https://dl.winehq.org/wine-builds/debian/dists/bullseye/main/binary-amd64/winehq-stable_7.0.0.0~bullseye-1_amd64.deb \
   && dpkg -i \
-    wine-stable-amd64_6.0.2~bullseye-1_amd64.deb \
-    wine-stable_6.0.2~bullseye-1_amd64.deb \
-    winehq-stable_6.0.2~bullseye-1_amd64.deb \
+    libvkd3d-shader1_1.2~bullseye-1_amd64.deb \
+    libvkd3d1_1.2~bullseye-1_amd64.deb \
+    wine-stable-amd64_7.0.0.0~bullseye-1_amd64.deb \
+    wine-stable_7.0.0.0~bullseye-1_amd64.deb \
+    winehq-stable_7.0.0.0~bullseye-1_amd64.deb \
   && rm \
-    wine-stable-amd64_6.0.2~bullseye-1_amd64.deb \
-    wine-stable_6.0.2~bullseye-1_amd64.deb \
-    winehq-stable_6.0.2~bullseye-1_amd64.deb \
+    libvkd3d-shader1_1.2~bullseye-1_amd64.deb \
+    libvkd3d1_1.2~bullseye-1_amd64.deb \
+    wine-stable-amd64_7.0.0.0~bullseye-1_amd64.deb \
+    wine-stable_7.0.0.0~bullseye-1_amd64.deb \
+    winehq-stable_7.0.0.0~bullseye-1_amd64.deb \
   && rm -rf /var/lib/apt/lists/*
 
 FROM wine-amd64 AS wine-gl
