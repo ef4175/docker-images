@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
+# Command to show all guard nodes:
+# for fingerprint in $(cat TorBrowser/Data/Tor/state | grep "confirmed_idx" | cut -d = -f 3 | awk '{print $1}'); do echo "https://metrics.torproject.org/rs.html#details/$fingerprint"; done
+# https://tor.stackexchange.com/questions/20653/view-current-set-of-guard-nodes-of-a-certain-client/20655#20655
+
 USER_NAME=`whoami`
 USER_UID=`id -u`
 if [ ! -d TorBrowser ]; then
