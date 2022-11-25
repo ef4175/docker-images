@@ -27,6 +27,8 @@ RUN groupadd --gid $USER_GID $USER_NAME \
 USER $USER_NAME
 WORKDIR /home/$USER_NAME
 
+# ftp.mozilla.org can be used instead of download-installer.cdn.mozilla.net.
+
 RUN gpg --batch --recv-keys 14F26682D0916CDD81E37B6D61B7B526D98F0353 \
   && curl -fsSLO --compressed https://download-installer.cdn.mozilla.net/pub/firefox/nightly/latest-mozilla-central/firefox-109.0a1.en-US.linux-x86_64.tar.bz2 \
   && curl -fsSLO --compressed https://download-installer.cdn.mozilla.net/pub/firefox/nightly/latest-mozilla-central/firefox-109.0a1.en-US.linux-x86_64.tar.bz2.asc \
