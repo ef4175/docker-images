@@ -30,8 +30,8 @@ WORKDIR /home/$USER_NAME
 # ftp.mozilla.org can be used instead of download-installer.cdn.mozilla.net.
 
 RUN gpg --batch --recv-keys 14F26682D0916CDD81E37B6D61B7B526D98F0353 \
-  && curl -fsSLO --compressed https://download-installer.cdn.mozilla.net/pub/firefox/releases/107.0.1/linux-x86_64/en-US/firefox-107.0.1.tar.bz2 \
-  && curl -fsSLO --compressed https://download-installer.cdn.mozilla.net/pub/firefox/releases/107.0.1/linux-x86_64/en-US/firefox-107.0.1.tar.bz2.asc \
-  && gpg --batch --verify firefox-107.0.1.tar.bz2.asc firefox-107.0.1.tar.bz2 \
-  && tar -jxf firefox-107.0.1.tar.bz2 \
-  && rm firefox-107.0.1.tar.bz2 firefox-107.0.1.tar.bz2.asc
+  && curl -fsSLO --compressed https://download-installer.cdn.mozilla.net/pub/firefox/releases/108.0/linux-x86_64/en-US/firefox-108.0.tar.bz2 \
+  && curl -fsSLO --compressed https://download-installer.cdn.mozilla.net/pub/firefox/releases/108.0/linux-x86_64/en-US/firefox-108.0.tar.bz2.asc \
+  && gpg --batch --verify firefox-108.0.tar.bz2.asc firefox-108.0.tar.bz2 \
+  && tar -jxf firefox-108.0.tar.bz2 \
+  && rm firefox-108.0.tar.bz2 firefox-108.0.tar.bz2.asc
