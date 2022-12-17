@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+
+USER_NAME=`whoami`
+CWD=`pwd`
+NEAREST_GIT_DIR=$CWD
+
+while ! ((test -d "$NEAREST_GIT_DIR/.git") || [ "$NEAREST_GIT_DIR" = "/" ])
+do
+  NEAREST_GIT_DIR=`dirname $NEAREST_GIT_DIR`
+done
+
+if [ "$NEAREST_GIT_DIR" = "/" ]
+then
+  NEAREST_GIT_DIR=$CWD
+fi
+
+LEN_NEAREST_GIT_DIR=${#NEAREST_GIT_DIR}
+SUFFIX_AFTER_NEAREST_GIT_DIR=${CWD:$LEN_NEAREST_GIT_DIR}
+DOCKER_WORKDIR=/home/$USER_NAME/project$SUFFIX_AFTER_NEAREST_GIT_DIR
+
+docker run -it --rm \
+  --pull never \
+  --user $USER_NAME \
+  -v $NEAREST_GIT_DIR:/home/$USER_NAME/project \
+  -v /home/$USER_NAME/.gitconfig:/home/$USER_NAME/.gitconfig \
+  -w $DOCKER_WORKDIR \
+  git scalar "$@"
