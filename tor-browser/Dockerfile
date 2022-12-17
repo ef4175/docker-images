@@ -25,8 +25,8 @@ USER $USER_NAME
 WORKDIR /home/$USER_NAME
 
 RUN gpg --batch --recv-keys EF6E286DDA85EA2A4BA7DE684E2C6E8793298290 \
-  && curl -fsSLO --compressed https://dist.torproject.org/torbrowser/12.0/tor-browser-linux64-12.0_ALL.tar.xz \
-  && curl -fsSLO --compressed https://dist.torproject.org/torbrowser/12.0/tor-browser-linux64-12.0_ALL.tar.xz.asc \
-  && gpg --batch --verify tor-browser-linux64-12.0_ALL.tar.xz.asc tor-browser-linux64-12.0_ALL.tar.xz \
-  && tar -xf tor-browser-linux64-12.0_ALL.tar.xz \
-  && rm tor-browser-linux64-12.0_ALL.tar.xz tor-browser-linux64-12.0_ALL.tar.xz.asc
+  && curl -fsSLO --compressed https://dist.torproject.org/torbrowser/12.0.1/tor-browser-linux64-12.0.1_ALL.tar.xz \
+  && curl -fsSLO --compressed https://dist.torproject.org/torbrowser/12.0.1/tor-browser-linux64-12.0.1_ALL.tar.xz.asc \
+  && gpg --batch --verify tor-browser-linux64-12.0.1_ALL.tar.xz.asc tor-browser-linux64-12.0.1_ALL.tar.xz \
+  && tar -xf tor-browser-linux64-12.0.1_ALL.tar.xz \
+  && rm tor-browser-linux64-12.0.1_ALL.tar.xz tor-browser-linux64-12.0.1_ALL.tar.xz.asc
