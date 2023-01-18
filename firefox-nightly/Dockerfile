@@ -30,8 +30,8 @@ WORKDIR /home/$USER_NAME
 # ftp.mozilla.org can be used instead of download-installer.cdn.mozilla.net.
 
 RUN gpg --batch --recv-keys 14F26682D0916CDD81E37B6D61B7B526D98F0353 \
-  && curl -fsSLO --compressed https://download-installer.cdn.mozilla.net/pub/firefox/nightly/latest-mozilla-central/firefox-110.0a1.en-US.linux-x86_64.tar.bz2 \
-  && curl -fsSLO --compressed https://download-installer.cdn.mozilla.net/pub/firefox/nightly/latest-mozilla-central/firefox-110.0a1.en-US.linux-x86_64.tar.bz2.asc \
-  && gpg --batch --verify firefox-110.0a1.en-US.linux-x86_64.tar.bz2.asc firefox-110.0a1.en-US.linux-x86_64.tar.bz2 \
-  && tar -jxf firefox-110.0a1.en-US.linux-x86_64.tar.bz2 \
-  && rm firefox-110.0a1.en-US.linux-x86_64.tar.bz2 firefox-110.0a1.en-US.linux-x86_64.tar.bz2.asc
+  && curl -fsSLO --compressed https://download-installer.cdn.mozilla.net/pub/firefox/nightly/latest-mozilla-central/firefox-111.0a1.en-US.linux-x86_64.tar.bz2 \
+  && curl -fsSLO --compressed https://download-installer.cdn.mozilla.net/pub/firefox/nightly/latest-mozilla-central/firefox-111.0a1.en-US.linux-x86_64.tar.bz2.asc \
+  && gpg --batch --verify firefox-111.0a1.en-US.linux-x86_64.tar.bz2.asc firefox-111.0a1.en-US.linux-x86_64.tar.bz2 \
+  && tar -jxf firefox-111.0a1.en-US.linux-x86_64.tar.bz2 \
+  && rm firefox-111.0a1.en-US.linux-x86_64.tar.bz2 firefox-111.0a1.en-US.linux-x86_64.tar.bz2.asc
